@@ -1,61 +1,85 @@
 body {
-	font-family:Arial;
-	height: 100%;
+  font-family:Arial;
+  height: 100%;
 }
 
-a.bottone{
-	border-radius: 25px;
-	background: #8AC007;
-	width: 111px;
-	height: 30px;
-	text-align: center;
-	color: black;
+label {
+  border-radius: 25px;
+  background: #8AC007;
+  width: 111px;
+  height: 30px;
+  text-align: center;
+  padding: 4px
+}
+label span {
+  text-align:center;
+  background: #8AC007;
+  padding:3px 0px;
+  display:block;
+  border-radius:4px;
+}
+input:checked + span {
+  background-color:#FFA500;
+}
+
+label input {
+  position:absolute;
+  top:-20px;
 }
 
 button {
-	border-radius: 25px;
-	background: #8AC007;
-	width: 111px;
-	height: 30px;
-	text-align: center;
+  border-radius: 25px;
+  background: #8AC007;
+  width: 111px;
+  height: 30px;
+  text-align: center;
 }
 
 button:active {
-	background: #FFA500;
+  background: #FFA500;
 }
 
 button:focus {
-	background: #FFA500;
+  background: #FFA500;
 }
 
 .label{
-	text-align: left;
-	margin-top: 4px;
-	height: 30px;
-	width: 85px;
+  text-align: left;
+  margin-top: 4px;
+  height: 30px;
+  width: 125px;
 }
 
 .leftcontainer{
-	width: 50%;
-	float:left;
-	margin: 5px 5px 5px 5px;
+  width: 50%;
+  float:left;
+  margin: 5px 5px 5px 0px;
 }
 
 .rightcontainer{
-	width: 40%;
-	float:right;
-	margin: 5px 5px 5px 5px;
+  width: 46%;
+  float:right;
+  margin: 5px 5px 5px 5px;
 }
 
 .instructionContainerRow{
-	margin-top:5px;
+  margin-top:5px;
+  margin-right:35px;
+  float:left
 }
 
 .instructionGroup{
-	margin-left:5px;
+  margin-left:5px;
 }
 
 #gamePlayerContainer{
-	margin: 0px 2px 5px 2px;
+  margin: 6px 2px 5px 2px;
+  width: 100%;
+}
+
+#scriptContainer{
+  border-style: solid;
+  margin: 10px 0px 0px 0px;
+  width: 100%;
 }
 /*# sourceMappingURL=main.css.map */

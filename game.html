@@ -13,16 +13,6 @@
       })
     </script>
 
-    <div class='rightcontainer'>
-      <div style='height:377px; border-style: solid;'>
-        <span class='label'>Story:</span>
-        <div style='height:86%; overflow-y: auto;' id='scriptContainer'></div>
-        <div id='gamePlayerContainer'>
-          <button id='play'>Play</button>
-          <button id='reset'>Reset</button>
-        </div>
-      </div>
-    </div>
     <div class='leftcontainer'>
       <div id="viewport" class='leftcontainer' style="width:100% !important; background-image: url('images/mario_bg.jpg'); height: 377px; float:left; border-style: solid;">
         <div id="sprite" style="padding-top:269px;">
@@ -32,42 +22,153 @@
           <img id="ladder-sprite-image" src="images/ladder.png" style="height:50px;">
         </div>
       </div>
-
       <div style='clear:both'></div>
-      <div id='actionsContainer' style='margin-top:20px; border-style: solid; padding: 10px 0px 10px 0px'>
+      <div style='width:100%; height:44; border-style: solid;'>
+        <div id='gamePlayerContainer'>
+          <button id='play'>Play</button>
+          <button id='reset'>Reset</button>
+        </div>
+      </div>
+      <div style='clear:both'></div>
+    <div  id='scriptContainer'></div>
+    </div>
+
+    <div class='rightcontainer'>
+      <div style='clear:both'></div>
+      <div id='actionsContainer' style='margin-top:5px; border-style: solid; padding: 3px 0px 0px 0px'>
         <div class='instructionGroup'>
-          <div style='float:left' class='label'>Actions:</div>
-          <div style='float:left'>
-            <button class='action line' id='walkLeft'>Walk Left</button>
-            <button class='action line' id='walkRight'>Walk Right</button>
-            <button class='action line' id='takeLadder'>Take Ladder</button>
-            <button class='action line' id='dropLadder'>Drop Ladder</button>
+<!--walk left-->
+          <div class='instructionContainerRow'>
+            <div style='float:left' class='label'>Io (chied-<span style="color:blue; "><b>e</b></span>-re)</div>
+            <input type="text" class='action' data-action='walkLeft' id='chiedo'></text>
           </div>
-        </div>
-        <div style='clear:both'></div>
-        <div class='instructionContainerRow instructionGroup'>
-          <div style='float:left' class='label'>Repetition:</div>
-          <div style='float:left'>
-            <button class='think line' id='while'>While</button>
+
+<!--walk left-->
+          <div class='instructionContainerRow'>
+            <div style='float:left' class='label'>Lui (prend-<span style="color:blue; "><b>e</b></span>-re)</div>
+            <input type="text" class='action' data-action='walkLeft' id='prende'></text>
           </div>
-        </div>
-        <div style='clear:both'></div>
-        <div class='instructionContainerRow instructionGroup'>
-          <div style='float:left' class='label'>Evaluation:</div>
-          <div style='float:left'>
-            <button class='think line' id='if'>If</button>
+
+<!--walk left-->
+          <div class='instructionContainerRow'>
+            <div style='float:left' class='label'>Noi (gioc-<span style="color:blue; "><b>a</b></span>-re)</div>
+            <input type="text" class='action' data-action='walkLeft' id='giochiamo'></text>
           </div>
-        </div>
-        <div style='clear:both'></div>
-        <div class='instructionContainerRow instructionGroup'>
-          <div style='float:left' class='label'>Condition:</div>
-          <div style='float:left'>
-            <button class='condition line' id='not'>Not</button>
-            <button class='condition line' id='AtLadder'>At The Ladder</button>
-            <button class='condition line' id='AtCanyon'>At The Canyon</button>
-            <button class='condition line' id='AtPrincess'>At The Princess</button>
-            <button class='condition line' id='HasLadder'>Have Ladder</button>
+
+<!--take the ladder-->
+          <div class='instructionContainerRow'>
+            <div style='float:left' class='label'>Voi (fin-<span style="color:blue; "><b>i</b></span>-re)</div>
+            <input type="text" class='action' data-action='takeLadder' id='finite'></text>
           </div>
+
+<!--walk right-->
+          <div class='instructionContainerRow'>
+            <div style='float:left' class='label'>Voi (chied-<span style="color:blue; "><b>e</b></span>-re)</div>
+            <input type="text" class='action' data-action='walkRight' id='chiedete'></text>
+          </div>
+
+<!--walk right-->
+          <div class='instructionContainerRow'>
+            <div style='float:left' class='label'>Lui (salt-<span style="color:blue; "><b>a</b></span>-re)</div>
+            <input type="text" class='action' data-action='walkRight' id='salta'></text>
+          </div>
+
+<!--walk right-->
+          <div class='instructionContainerRow'>
+            <div style='float:left' class='label'>Loro (fin-<span style="color:blue; "><b>i</b></span>-re)</div>
+            <input type="text" class='action' data-action='walkRight' id='finiscono'></text>
+          </div>
+
+<!--walk right-->
+          <div class='instructionContainerRow'>
+            <div style='float:left' class='label'>Tu (gioc-<span style="color:blue; "><b>a</b></span>-re)</div>
+            <input type="text" class='action' data-action='walkRight' id='giochi'></text>
+          </div>
+
+<!--walk right-->
+          <div class='instructionContainerRow'>
+            <div style='float:left' class='label'>Lui (gioc-<span style="color:blue; "><b>a</b></span>-re)</div>
+            <input type="text" class='action' data-action='walkRight' id='gioca'></text>
+          </div>
+
+<!--walk right-->
+          <div class='instructionContainerRow'>
+            <div style='float:left' class='label'>Loro (salt-<span style="color:blue; "><b>a</b></span>-re)</div>
+            <input type="text" class='action' data-action='walkRight' id='saltano'></text>
+          </div>
+
+<!--walk right-->
+          <div class='instructionContainerRow'>
+            <div style='float:left' class='label'>Noi (fin-<span style="color:blue; "><b>i</b></span>-re)</div>
+            <input type="text" class='action' data-action='walkRight' id='finiamo'></text>
+          </div>
+
+<!--walk right-->
+          <div class='instructionContainerRow'>
+            <div style='float:left' class='label'>Loro (chied-<span style="color:blue; "><b>e</b></span>-re)</div>
+            <input type="text" class='action' data-action='walkRight' id='chiedono'></text>
+          </div>
+
+<!--walk right-->
+          <div class='instructionContainerRow'>
+            <div style='float:left' class='label'>Loro (prend-<span style="color:blue; "><b>e</b></span>-re)</div>
+            <input type="text" class='action' data-action='walkRight' id='prendono'></text>
+          </div>
+
+<!--walk right-->
+          <div class='instructionContainerRow'>
+            <div style='float:left' class='label'>Lei (sent-<span style="color:blue; "><b>i</b></span>-re)</div>
+            <input type="text" class='action' data-action='walkRight' id='sente'></text>
+          </div>
+
+<!--walk right-->
+          <div class='instructionContainerRow'>
+            <div style='float:left' class='label'>Voi (salt-<span style="color:blue; "><b>a</b></span>-re)</div>
+            <input type="text" class='action' data-action='walkRight' id='saltate'></text>
+          </div>
+
+<!--walk right-->
+          <div class='instructionContainerRow'>
+            <div style='float:left' class='label'>Voi (prend-<span style="color:blue; "><b>e</b></span>-re)</div>
+            <input type="text" class='action' data-action='walkRight' id='prendete'></text>
+          </div>
+
+<!--walk right-->
+          <div class='instructionContainerRow'>
+            <div style='float:left' class='label'>Loro (sent-<span style="color:blue; "><b>i</b></span>-re)</div>
+            <input type="text" class='action' data-action='walkRight' id='sentono'></text>
+          </div>
+
+<!--walk right-->
+          <div class='instructionContainerRow'>
+            <div style='float:left' class='label'>Lei (fin-<span style="color:blue; "><b>i</b></span>-re)</div>
+            <input type="text" class='action' data-action='walkRight' id='finisce'></text>
+          </div>
+
+<!--drop the ladder-->
+          <div class='instructionContainerRow'>
+            <div style='float:left' class='label'>Voi (gioc-<span style="color:blue; "><b>a</b></span>-re)</div>
+            <input type="text" class='action' data-action='dropLadder' id='giocate'></text>
+          </div>
+
+<!--walk right-->
+          <div class='instructionContainerRow'>
+            <div style='float:left' class='label'>Tu (copr-<span style="color:blue; "><b>i</b></span>-re)</div>
+            <input type="text" class='action' data-action='walkRight' id='copri'></text>
+          </div>
+
+<!--walk right-->
+          <div class='instructionContainerRow'>
+            <div style='float:left' class='label'>Io (fin-<span style="color:blue; "><b>i</b></span>-re)</div>
+            <input type="text" class='action' data-action='walkRight' id='finisco'></text>
+          </div>
+
+<!--walk right-->
+          <div class='instructionContainerRow'>
+            <div style='float:left' class='label'>Voi (sent-<span style="color:blue; "><b>i</b></span>-re)</div>
+            <input type="text" class='action' data-action='walkRight' id='sentite'></text>
+          </div>
+
         </div>
         <div style='clear:both'></div>
       </div>

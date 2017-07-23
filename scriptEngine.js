@@ -57,17 +57,14 @@ var initScriptEngine = function(){
 
   //printable actions map
   var stringActions=new Array();
-  stringActions['takeLadder']= 'take the ladder';
-  stringActions['dropLadder']= 'drop the ladder';
-  stringActions['walkRight']= 'walk right';
-  stringActions['walkLeft']= 'walk left';
-  stringActions['AtLadder']= 'at the ladder, ';
-  stringActions['AtCanyon']= 'at the canyon, ';
-  stringActions['AtPrincess']= 'at the princess, ';
-  stringActions['HasLadder']= 'have the ladder, ';
-  stringActions['while']= 'while ';
-  stringActions['if']= 'if ';
-  stringActions['not']= 'not ';
+  stringActions['takeLadder']= 'You take the ladder';
+  stringActions['dropLadder']= 'You drop the ladder';
+  stringActions['walkRight']= 'You walk right';
+  stringActions['walkLeft']= 'You walk left';
+  stringActions['AtLadder']= 'You are at the ladder, ';
+  stringActions['AtCanyon']= 'You are at the canyon, ';
+  stringActions['AtPrincess']= 'You are at the princess, ';
+  stringActions['HasLadder']= 'You have the ladder, ';
 
 
   //terminates the game
@@ -287,11 +284,25 @@ var initScriptEngine = function(){
   //execute script
   $('#play').on('click',function(){
 
-    //if the flag is still raised, the player left a while without subject action; stop
-    if(justClosedWhile){
-      $('#modalErrorNoInstruction').openModal();
-      return;
-    }
+    //wheneven the player clicks on an action
+    $('input.action').each(function(input){
+      //get action name
+      let instruction=$(this).data("action");
+      let value=$(this).val()
+      let expected_instruction_as_id=$(this).attr("id")
+
+
+      if (value == expected_instruction_as_id){
+        console.log(value+" == "+expected_instruction_as_id)
+      //while has a strict syntax; if while is selected
+      plan=plan.concat(instruction+'(); ');
+
+      //generate output in the current container
+      scriptedAction.append($('<span>').text(stringActions[instruction]+", "));
+      }else{
+        console.log(value+" != "+expected_instruction_as_id)
+      }
+    });
 
     //execute generated code
     eval(plan);
@@ -311,104 +322,6 @@ var initScriptEngine = function(){
     location.reload()
   });
 
-  //wheneven the player clicks on an action
-  $('#actionsContainer').on('click','.line',function(){
-    //get action name
-    var instruction=$(this).attr("id");
-
-
-    //while has a strict syntax; if while is selected
-    if(('while'==instruction || 'if'==instruction) && !inCondition){
-
-      //take note and demand a condition afterwards
-      inCondition=true;
-
-      //select right behaviour for conditional instructions
-      switch(instruction) {
-        case 'while':
-          //generate code for open while (with infinite loop avoidance condition)
-          plan=plan.concat('while(currentStep<'+maxSteps+' && ');
-
-          //generate output in the current container
-          scriptedAction.append($('<span>').text(stringActions[instruction]));
-          break;
-        case 'if':
-          //generate code for open if
-          plan=plan.concat('if( ');
-
-          //generate output in the current container
-          scriptedAction.append($('<span>').text(stringActions[instruction]));
-          break;
-      }
-    }else{
-      //if it's another action
-      //if in while, demand a condition
-      if(inCondition){
-        //if not a condition
-        if(!$(this).hasClass('condition')){
-
-          //demand it
-          $('#modalErrorNoCondition').openModal();
-
-          //and refuse to add the action
-          return;
-        }else{
-
-          //if it's a negation
-          if('not'==instruction){
-
-            //generate code for not
-            plan=plan.concat('!');
-
-            //generate output in the current container
-            scriptedAction.append($('<span>').text(stringActions[instruction]));
-
-          }else{
-            //add the condition with closing while parenthese
-            plan=plan.concat(instruction+'()) ');
-
-            //generate output in the current container
-            scriptedAction.append($('<span>').text(stringActions[instruction]));
-
-            //close the while after action is added
-            inCondition=false;
-
-            //raise flag for syntax check of while termination block
-            justClosedWhile=true;
-          }
-        }
-      }else{
-
-        //prevent putting a boolean or negation without being in the need of it
-        switch(instruction) {
-          case 'not':
-          case 'AtCanyon':
-          case 'AtLadder':
-          case 'HasLadder':
-            //demand it
-            $('#modalErrorConditionNegation').openModal();
-
-            //and refuse to add the action
-            return;
-        }
-        //add the action
-        plan=plan.concat(instruction+'(); ');
-
-        //generate output in the current container
-        scriptedAction.append($('<span>').text(stringActions[instruction]));
-
-        //create a new visible element container
-        scriptedAction=$('<div>');
-
-        //add visible element to script list
-        $('#scriptContainer').append(scriptedAction);
-
-        //switch off the flag so we know the syntax is good
-        if(justClosedWhile) justClosedWhile=false;
-      }
-    }
-
-  });
 };
 
 window.initScriptEngine = initScriptEngine
