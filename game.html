@@ -58,6 +58,16 @@
     </div-->
 
 
+    <div class='rightcontainer'>
+      <div style='height:377px; border-style: solid;'>
+        <span class='label'>Story:</span>
+        <div style='height:86%; overflow-y: auto;' id='scriptContainer'></div>
+        <div id='gamePlayerContainer'>
+          <button id='play'>Play</button>
+          <button id='reset'>Reset</button>
+        </div>
+      </div>
+    </div>
     <div class='leftcontainer'>
       <div id="viewport" class='leftcontainer' style="width:100% !important; background-image: url('images/mario_bg.jpg'); height: 377px; float:left; border-style: solid;">
         <div id="sprite" style="padding-top:269px;">
@@ -67,54 +77,45 @@
           <img id="ladder-sprite-image" src="images/ladder.png" style="height:50px;">
         </div>
       </div>
-    </div>
 
-    <div style='clear:both'></div>
-    <div style='height:60%; border-style: solid;'>
-      <span class='label'>Story:</span>
-      <div style='height:314px; overflow-y: auto;' id='scriptContainer'></div>
-      <div id='gamePlayerContainer'>
-        <button id='play'>Play</button>
-        <button id='reset'>Reset</button>
+      <div style='clear:both'></div>
+      <div id='actionsContainer' style='margin-top:20px; border-style: solid; padding: 10px 0px 10px 0px'>
+        <div class='instructionGroup'>
+          <div style='float:left' class='label'>Actions:</div>
+          <div style='float:left'>
+            <button class='action line' id='walkLeft'>Walk Left</button>
+            <button class='action line' id='walkRight'>Walk Right</button>
+            <button class='action line' id='takeLadder'>Take Ladder</button>
+            <button class='action line' id='dropLadder'>Drop Ladder</button>
+          </div>
+        </div>
+        <div style='clear:both'></div>
+        <div class='instructionContainerRow instructionGroup'>
+          <div style='float:left' class='label'>Repetition:</div>
+          <div style='float:left'>
+            <button class='think line' id='while'>While</button>
+          </div>
+        </div>
+        <div style='clear:both'></div>
+        <div class='instructionContainerRow instructionGroup'>
+          <div style='float:left' class='label'>Evaluation:</div>
+          <div style='float:left'>
+            <button class='think line' id='if'>If</button>
+          </div>
+        </div>
+        <div style='clear:both'></div>
+        <div class='instructionContainerRow instructionGroup'>
+          <div style='float:left' class='label'>Condition:</div>
+          <div style='float:left'>
+            <button class='condition line' id='not'>Not</button>
+            <button class='condition line' id='AtLadder'>At Ladder</button>
+            <button class='condition line' id='AtCanyon'>At Canyon</button>
+            <button class='condition line' id='HasLadder'>Has Ladder</button>
+          </div>
+        </div>
+        <div style='clear:both'></div>
       </div>
     </div>
-    <div id='actionsContainer' style='margin-top:20px; border-style: solid; padding: 10px 0px 10px 0px'>
-      <div class='instructionGroup'>
-        <div style='float:left' class='label'>Actions:</div>
-        <div style='float:left'>
-          <button class='action line' id='walkLeft'>Walk Left</button>
-          <button class='action line' id='walkRight'>Walk Right</button>
-          <button class='action line' id='takeLadder'>Take Ladder</button>
-          <button class='action line' id='dropLadder'>Drop Ladder</button>
-        </div>
-      </div>
-      <div style='clear:both'></div>
-      <div class='instructionContainerRow instructionGroup'>
-        <div style='float:left' class='label'>Repetition:</div>
-        <div style='float:left'>
-          <button class='think line' id='while'>While</button>
-        </div>
-      </div>
-      <div style='clear:both'></div>
-      <div class='instructionContainerRow instructionGroup'>
-        <div style='float:left' class='label'>Evaluation:</div>
-        <div style='float:left'>
-          <button class='think line' id='if'>If</button>
-        </div>
-      </div>
-      <div style='clear:both'></div>
-      <div class='instructionContainerRow instructionGroup'>
-        <div style='float:left' class='label'>Condition:</div>
-        <div style='float:left'>
-          <button class='condition line' id='not'>Not</button>
-          <button class='condition line' id='AtLadder'>At Ladder</button>
-          <button class='condition line' id='AtCanyon'>At Canyon</button>
-          <button class='condition line' id='HasLadder'>Has Ladder</button>
-        </div>
-      </div>
-      <div style='clear:both'></div>
-    </div>
-  </div>
-  <script type="text/javascript" src="lib/move.min.js"></script>
-</body>
+    <script type="text/javascript" src="lib/move.min.js"></script>
+  </body>
 </html>
