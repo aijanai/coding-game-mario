@@ -57,25 +57,15 @@ var initScriptEngine = function(){
 
   //printable actions map
   var stringActions=new Array();
-  stringActions['takeLadder']= 'You take the ladder';
-  stringActions['dropLadder']= 'You drop the ladder';
-  stringActions['walkRight']= 'You walk right';
-  stringActions['walkLeft']= 'You walk left';
-  stringActions['AtLadder']= 'You are at the ladder, ';
-  stringActions['AtCanyon']= 'You are at the canyon, ';
-  stringActions['AtPrincess']= 'You are at the princess, ';
-  stringActions['HasLadder']= 'You have the ladder, ';
+  stringActions['takeLadder']= 'hai preso la scala';
+  stringActions['dropLadder']= 'hai posato la scala';
+  stringActions['walkRight']= 'cammini a destra';
+  stringActions['walkLeft']= 'cammini a sinistra';
+  stringActions['AtLadder']= 'sei alla scala, ';
+  stringActions['AtCanyon']= 'sei al canyon, ';
+  stringActions['AtPrincess']= 'sei alla principessa, ';
+  stringActions['HasLadder']= 'hai la scala, ';
 
-
-  //terminates the game
-  function loseGame(){
-    message='after some time, the Princess gets tired and goes away: you lost';
-    gameLog(message);
-    gameOver=true;
-
-    //add to list function calls for the viewport (filter actions that have no graphical relevance)
-    callTrace.push('loseGame');
-  }
 
   //checks whether the player won
   function checkGameOutcome(){
@@ -87,6 +77,7 @@ var initScriptEngine = function(){
 
       //add to list function calls for the viewport (filter actions that have no graphical relevance)
       callTrace.push('winGame');
+      viewportFunctions.playAnimation(['winGame']);
     }
 
     //if you reached maximum number of steps, terminate
@@ -281,41 +272,74 @@ var initScriptEngine = function(){
     updateSurroundingStatus();
   }
 
-  //execute script
-  $('#play').on('click',function(){
-
-    //wheneven the player clicks on an action
-    $('input.action').each(function(input){
-      //get action name
-      let instruction=$(this).data("action");
-      let value=$(this).val()
-      let expected_instruction_as_id=$(this).attr("id")
 
 
-      if (value == expected_instruction_as_id){
-        console.log(value+" == "+expected_instruction_as_id)
-      //while has a strict syntax; if while is selected
-      plan=plan.concat(instruction+'(); ');
-
-      //generate output in the current container
-      scriptedAction.append($('<span>').text(stringActions[instruction]+", "));
-      }else{
-        console.log(value+" != "+expected_instruction_as_id)
-      }
-    });
-
-    //execute generated code
-    eval(plan);
-    console.log(plan);
-    checkGameOutcome();
-
-    //if plan was not sufficient to carry out goal, kill the player
-    if(!gameOver) loseGame();
-    console.log(planList);
-    console.log(callTrace);
-
-    viewportFunctions.playAnimation(callTrace);
+  //wheneven the player clicks on an action
+  $('.play').on('click',function(){
+    decodeAndExecute($(this))
   });
+
+  function passControl(button){
+    button=$(button)
+
+    //hide button
+    button.hide()
+    button.removeClass('play')
+
+    //enable button on next one
+    let next_button=$("div.instructionContainerRow.virgin").first().children('button')
+    next_button.addClass('play')
+
+    //reveal next one
+    $("div.instructionContainerRow.virgin").first().removeClass('virgin')
+
+    //bind chain of events to current button
+    next_button.bind('click',function(){
+
+      decodeAndExecute($(this))
+    })
+  }
+
+  function decodeAndExecute(button){
+
+    //get action
+    let input=button.siblings("input.action")
+
+    //get action name
+    let instruction=input.data("action");
+    let value=input.val()
+    let expected_instruction_as_id=input.attr("id")
+
+
+    if (value == expected_instruction_as_id){
+
+      console.log(value+" == "+expected_instruction_as_id)
+
+      //instructionify
+      current_instruction=instruction+'();'
+
+      //execute
+      eval(current_instruction);
+
+      //log
+      console.log(current_instruction);
+
+      //play animation
+      viewportFunctions.playAnimation([current_instruction]);
+
+      //generate output in the log container
+      scriptedAction.append($('<span>').text(stringActions[instruction]+", "));
+
+      //enable next button
+      passControl(button)
+    }else{
+      console.log(value+" != "+expected_instruction_as_id)
+    }
+
+    //check how it goes
+    checkGameOutcome();
+    console.log("ok")
+  }
 
   //reset game
   $('#reset').on('click',function(){

@@ -18,7 +18,7 @@ var initViewportEngine = function(){
         .add('margin-left', 30)
         .end(function(){
           $('#sprite-image').attr("src", "images/mario_stop.png");
-          if (callbacks.length > 0) {
+          if (Array.isArray(callbacks) && callbacks.length > 0) {
             console.log(callbacks);
             var functionToCall = callbacks.shift();
             eval(functionToCall + '([' + callbacks.map(function(o){return '"' + o + '"'}) + '])');
@@ -27,7 +27,7 @@ var initViewportEngine = function(){
     } else {
       setTimeout(function(){
         $('#sprite-image').attr("src", "images/mario_stop.png");
-        if (callbacks.length > 0) {
+        if (Array.isArray(callbacks) && callbacks.length > 0) {
           console.log(callbacks);
           var functionToCall = callbacks.shift();
           eval(functionToCall + '([' + callbacks.map(function(o){return '"' + o + '"'}) + '])');
@@ -47,7 +47,7 @@ var initViewportEngine = function(){
         .sub('margin-left', 30)
         .end(function(){
           $('#sprite-image').attr("src", "images/mario_stop.png");
-          if (callbacks.length > 0) {
+          if (Array.isArray(callbacks) && callbacks.length > 0) {
             console.log(callbacks);
             var functionToCall = callbacks.shift();
             eval(functionToCall + '([' + callbacks.map(function(o){return '"' + o + '"'}) + '])');
@@ -56,7 +56,7 @@ var initViewportEngine = function(){
     } else {
       setTimeout(function(){
         $('#sprite-image').attr("src", "images/mario_stop.png");
-        if (callbacks.length > 0) {
+        if (Array.isArray(callbacks) && callbacks.length > 0) {
           console.log(callbacks);
           var functionToCall = callbacks.shift();
           eval(functionToCall + '([' + callbacks.map(function(o){return '"' + o + '"'}) + '])');
@@ -71,7 +71,7 @@ var initViewportEngine = function(){
       $('#ladder-sprite').hide();
       viewportHasLadder = true;
     }
-    if (callbacks.length > 0) {
+    if (Array.isArray(callbacks) && callbacks.length > 0) {
       console.log(callbacks);
       var functionToCall = callbacks.shift();
       eval(functionToCall + '([' + callbacks.map(function(o){return '"' + o + '"'}) + '])');
@@ -90,7 +90,7 @@ var initViewportEngine = function(){
         viewportCanyonTraversable = true;
       }
     }
-    if (callbacks.length > 0) {
+    if (Array.isArray(callbacks) && callbacks.length > 0) {
       console.log(callbacks);
       var functionToCall = callbacks.shift();
       eval(functionToCall + '([' + callbacks.map(function(o){return '"' + o + '"'}) + '])');
@@ -109,6 +109,7 @@ var initViewportEngine = function(){
   viewportFunctions.playAnimation = function(callTrace){
     var functionsStack = callTrace.map(function(o){return "viewportFunctions." + o})
     var functionToCall = functionsStack.shift()
+    console.log(functionToCall)
     eval(functionToCall + '([' + functionsStack.map(function(o){return '"' + o + '"'}) + '])');
   }
 
@@ -117,7 +118,7 @@ var initViewportEngine = function(){
   }
 
   viewportFunctions.winGame = function(callTrace){
-				$('#scriptContainer').append("Congrats, you made it");
+				$('#scriptContainer').append("Bravo, ce l'hai fatta!");
   }
 
   viewportFunctions.viewportAtLadder = function(){

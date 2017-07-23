@@ -57,7 +57,7 @@ button:focus {
 }
 
 .rightcontainer{
-  width: 46%;
+  width: 33%;
   float:right;
   margin: 5px 5px 5px 5px;
 }
@@ -65,7 +65,12 @@ button:focus {
 .instructionContainerRow{
   margin-top:5px;
   margin-right:35px;
-  float:left
+  float:left;
+}
+
+.virgin{
+  display:none;
+
 }
 
 .instructionGroup{
@@ -79,7 +84,7 @@ button:focus {
 
 #scriptContainer{
   border-style: solid;
-  margin: 10px 0px 0px 0px;
-  width: 100%;
+  padding: 6px 6px 6px 6px;
+  margin: 5px 8px 5px 5px;
 }
 /*# sourceMappingURL=main.css.map */
