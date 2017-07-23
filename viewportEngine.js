@@ -117,7 +117,7 @@ var initViewportEngine = function(){
   }
 
   viewportFunctions.winGame = function(callTrace){
-				$('#scriptContainer').append("Congrats, you did it");
+				$('#scriptContainer').append("Congrats, you made it");
   }
 
   viewportFunctions.viewportAtLadder = function(){
